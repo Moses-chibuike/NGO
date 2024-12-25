@@ -37,28 +37,28 @@ const mockdata = [
         title: 'Widows',
         description:
             'Empowering widows to rebuild their lives through tailored assistance and opportunities.',
-        action: `Donate Now`
+        action: `Donate`
     },
     {
         image: 'https://images.unsplash.com/photo-1497655392221-e645087843da?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Orphans',
         description:
             `Providing care and resources to ensure orphans thrive and have access to a nurturing environment.`,
-        action: 'Donate Now'
+        action: 'Donate'
     },
     {
         image: 'https://images.unsplash.com/photo-1487546331507-fcf8a5d27ab3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Single Mothers',
         description:
             `Offering support and relief to single mothers as they navigate the challenges of raising children independently.`,
-        action: 'Donate Now'
+        action: 'Donate'
     },
     {
         image: 'https://images.unsplash.com/photo-1473649085228-583485e6e4d7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'School Children',
         description:
             `Promoting education by assisting school children with the resources they need to succeed academically.`,
-        action: 'Donate Now '
+        action: 'Donate'
     },
 ];
 
