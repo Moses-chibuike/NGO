@@ -30,12 +30,14 @@ import {IconFlag, IconHeart, IconHeartFilled, IconSeparator, IconShare} from "@t
 import {useDisclosure, useMediaQuery, useToggle} from "@mantine/hooks";
 import {BackButton, DonationDrawer, NotFound, ShareModal, UserCard} from "../components";
 import {Helmet} from "react-helmet";
-import * as dayjs from "dayjs";
-import * as LocalizedFormat from "dayjs/plugin/localizedFormat"
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 import {notifications} from "@mantine/notifications";
 
+// Initialize dayjs plugin
+dayjs.extend(localizedFormat);
+
 const CampaignDetailsPage = (): JSX.Element => {
-    dayjs.extend(LocalizedFormat)
     const {id} = useParams();
     const [campaign, setCampaign] = useState<ICampaign>();
     const [opened, {open, close}] = useDisclosure(false);
@@ -144,7 +146,6 @@ const CampaignDetailsPage = (): JSX.Element => {
                                                 </ActionIcon>
                                                 <ActionIcon
                                                     title={`${following ? 'Unfollow' : 'Follow'} this campaign`}
-                                                    // variant={following ? 'filled' : 'subtle'}
                                                     size="lg"
                                                     color={'secondary'}
                                                     onClick={() => {
@@ -157,10 +158,8 @@ const CampaignDetailsPage = (): JSX.Element => {
                                                                 root: {
                                                                     backgroundColor: theme.colors.blue[6],
                                                                     borderColor: theme.colors.blue[6],
-
                                                                     '&::before': {backgroundColor: theme.white},
                                                                 },
-
                                                                 title: {color: theme.white},
                                                                 description: {color: theme.white},
                                                                 closeButton: {
@@ -185,7 +184,7 @@ const CampaignDetailsPage = (): JSX.Element => {
                                     <UserCard/>
                                 </Paper>
                                 <Paper {...paperProps}>
-                                    <Text>Created on {dayjs(campaign?.createdAt).format('LL')}</Text>
+                                    <Text>Created on {campaign?.createdAt ? dayjs(campaign.createdAt).format('LL') : ''}</Text>
                                 </Paper>
                                 {!matchesMobile &&
                                     <Button
@@ -235,10 +234,8 @@ const CampaignDetailsPage = (): JSX.Element => {
                                                             root: {
                                                                 backgroundColor: theme.colors.blue[6],
                                                                 borderColor: theme.colors.blue[6],
-
                                                                 '&::before': {backgroundColor: theme.white},
                                                             },
-
                                                             title: {color: theme.white},
                                                             description: {color: theme.white},
                                                             closeButton: {

@@ -1,7 +1,7 @@
-import HeroSection from "../sections/Home/Hero.tsx";
+import HeroSection from "../sections/Home/Hero";
 import {Box, BoxProps, Container, Text, TextProps, Title, TitleProps} from "@mantine/core";
 import {TitleBadge} from "../components";
-import FeaturesSection from "../sections/Home/Features.tsx";
+import FeaturesSection from "../sections/Home/Features";
 import StatsSection from "../sections/Home/Stats";
 import JoinUsSection from "../sections/Home/JoinUs";
 import WaysToFundSection from "../sections/Home/WaysToFund";

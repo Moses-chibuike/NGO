@@ -1,5 +1,5 @@
-import LandingNavbar from "./LandingNavbar.tsx";
-import SectionTitle from "./SectionTitle.tsx";
+import LandingNavbar from "./LandingNavbar";
+import SectionTitle from "./SectionTitle";
 import TitleBadge from "./TitleBadge"
 import CampaignCard from "./CampaignCard";
 import TestimonialsCard from "./TestimonialsCard";
