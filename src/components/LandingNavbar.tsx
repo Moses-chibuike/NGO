@@ -37,7 +37,7 @@ import {
 } from '@tabler/icons-react';
 import {useEffect, useState} from "react";
 import {BrandName, SearchDrawer} from "./index";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
     link: {
@@ -178,6 +178,12 @@ const LandingNavbar = ({compressed}: IProps) => {
     const {classes, theme} = useStyles();
     const [stickyClass, setStickyClass] = useState(false);
     const matchesMobile = useMediaQuery('(max-width: 768px)');
+    const navigate = useNavigate();
+
+    const handleNavigation = (path: string) => {
+        closeDrawer();
+        navigate(path);
+    };
 
     const links = mockdata.map((item) => (
         <UnstyledButton className={classes.subLink} key={item.title}>
@@ -246,43 +252,6 @@ const LandingNavbar = ({compressed}: IProps) => {
                             <Button component={Link} to="/campaigns" className={classes.link} {...buttonProps}>
                                 Campaigns
                             </Button>
-                            {/* <HoverCard width={700} position="bottom" radius="sm" shadow="md" withinPortal>
-                                <HoverCard.Target>
-                                    <a href="#" className={classes.link}>
-                                        <Center inline>
-                                            <Box component="span" mr={5}>
-                                                Donate
-                                            </Box>
-                                            <IconChevronDown size={18} className={classes.linkIcon}/>
-                                        </Center>
-                                    </a>
-                                </HoverCard.Target>
-
-                                <HoverCard.Dropdown sx={{overflow: 'hidden'}}>
-                                    <Group position="apart" px="md">
-                                        <Text fw={500} color="dark">Categories</Text>
-                                        <Button variant="default">See all</Button>
-                                    </Group>
-
-                                    <Divider
-                                        my="sm"
-                                        mx="-md"
-                                        color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
-                                    />
-
-                                    <SimpleGrid cols={3} spacing={0}>
-                                        {links}
-                                    </SimpleGrid>
-                                </HoverCard.Dropdown>
-                            </HoverCard> */}
-                            {/* <Button
-                                leftIcon={<IconSearch size={18} className={classes.linkIcon}/>}
-                                onClick={toggleSearchDrawer}
-                                className={classes.link}
-                                {...buttonProps}
-                            >
-                                Search
-                            </Button> */}
                             <Button component={Link} to="/create-campaign" className={classes.link} {...buttonProps}>
                                 Contact Us
                             </Button>
@@ -300,48 +269,47 @@ const LandingNavbar = ({compressed}: IProps) => {
                 onClose={closeDrawer}
                 size="100%"
                 padding="md"
-                title="Navigation"
+                title="Menu"
                 className={classes.hiddenDesktop}
                 zIndex={1000000}
             >
                 <ScrollArea h={`calc(100vh - ${rem(0)})`} mx="-md">
                     <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}/>
-
-                    <Button component={Link} to="/" className={classes.link} {...buttonProps}>
-                        Home
-                    </Button>
-                    <Button component={Link} to="/how-it-works" className={classes.link} {...buttonProps}>
-                        How it works
-                    </Button>
-                    <Button component={Link} to="/campaigns" className={classes.link} {...buttonProps}>
-                        Campaigns
-                    </Button>
-                    <UnstyledButton className={classes.link} onClick={toggleLinks}>
-                        <Center inline>
-                            <Box component="span" mr={5}>
-                                Invest
-                            </Box>
-                            <IconChevronDown size={16} className={classes.linkIcon}/>
-                        </Center>
-                    </UnstyledButton>
-                    <Collapse in={linksOpened}>{links}</Collapse>
-
-                    <Button component={Link} to="/create-campaign" className={classes.link} {...buttonProps}>
-                        Start a campaign
-                    </Button>
-                    <Button component={Link} to="/dashboard" className={classes.link} {...buttonProps}>
-                        My dashboard
-                    </Button>
-                    <Button
-                        leftIcon={<IconSearch size={18}/>}
-                        onClick={() => {
-                            closeDrawer()
-                            toggleSearchDrawer();
-                        }}
-                        className={classes.link}
+  
+                    <Button 
+                        onClick={() => handleNavigation('/')} 
+                        className={classes.link} 
                         {...buttonProps}
                     >
-                        Search
+                        Home
+                    </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/how-it-works')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Donate
+                    </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/campaigns')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Campaigns
+                    </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/dashboard')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Team Members
+                    </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/create-campaign')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Contact Us
                     </Button>
                 </ScrollArea>
             </Drawer>
