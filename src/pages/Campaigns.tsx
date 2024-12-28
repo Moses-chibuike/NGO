@@ -14,11 +14,11 @@ const CampaignsPage = (): JSX.Element => {
     }
 
     const titleProps: TitleProps = {
-        size: 32,
+        size: matchesMobile ? 24 : 32,
         weight: 700,
         mb: "lg",
         transform: 'capitalize',
-        sx: {lineHeight: '40px'}
+        sx: {lineHeight: matchesMobile ? '32px' : '40px'}
     }
 
     const items = campaignsData.data.map(c => (<CampaignCard key={c.id} data={c} showActions={true}/>))
@@ -30,17 +30,29 @@ const CampaignsPage = (): JSX.Element => {
             </Helmet>
             <Box>
                 <Container size="lg">
-                    <Stack>
+                    <Stack spacing={matchesMobile ? "md" : "xl"}>
                         <Box {...boxProps}>
                             <Title {...titleProps} align="center">Discover campaigns to fund</Title>
                         </Box>
                         <Flex
                             justify="space-between"
                             gap={{base: 'sm', sm: 'lg'}}
-                            direction={{base: 'column-reverse', sm: 'row'}}
+                            direction={{base: 'column', sm: 'row'}}
+                            w="100%"
                         >
-                            <TextInput placeholder="search campaigns..." sx={{width: 500}}/>
-                            <Flex align="center" gap="sm" justify={{base: 'space-between', sm: 'flex-start'}}>
+                            <TextInput 
+                                placeholder="search campaigns..." 
+                                sx={(theme) => ({
+                                    width: '100%',
+                                    maxWidth: theme.fn.largerThan('sm') ? '500px' : '100%'
+                                })}
+                            />
+                            <Flex 
+                                align="center" 
+                                gap="sm" 
+                                justify={{base: 'space-between', sm: 'flex-start'}}
+                                w={{base: '100%', sm: 'auto'}}
+                            >
                                 <Select
                                     label=""
                                     placeholder="campaigns in"
@@ -51,6 +63,10 @@ const CampaignsPage = (): JSX.Element => {
                                         {value: '50', label: 'show: 50'},
                                         {value: '100', label: 'show: 100'},
                                     ]}
+                                    styles={{
+                                        root: { flex: 1 },
+                                        input: { minWidth: matchesMobile ? '100%' : '120px' }
+                                    }}
                                 />
                                 <Select
                                     label=""
@@ -61,6 +77,10 @@ const CampaignsPage = (): JSX.Element => {
                                         {value: 'popular', label: 'sort by: popular'},
                                         {value: 'latest', label: 'sorty by: latest'},
                                     ]}
+                                    styles={{
+                                        root: { flex: 1 },
+                                        input: { minWidth: matchesMobile ? '100%' : '120px' }
+                                    }}
                                 />
                             </Flex>
                         </Flex>
@@ -69,7 +89,7 @@ const CampaignsPage = (): JSX.Element => {
                             spacing="lg"
                             breakpoints={[
                                 {maxWidth: 'md', cols: 2, spacing: 'md'},
-                                {maxWidth: 'sm', cols: 1, spacing: 0},
+                                {maxWidth: 'sm', cols: 1, spacing: 'md'},
                             ]}
                         >
                             {items}
