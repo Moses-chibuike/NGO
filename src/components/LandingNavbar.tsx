@@ -298,18 +298,18 @@ const LandingNavbar = ({compressed}: IProps) => {
                         Campaigns
                     </Button>
                     <Button 
-                        onClick={() => handleNavigation('/dashboard')} 
-                        className={classes.link} 
-                        {...buttonProps}
-                    >
-                        Team Members
-                    </Button>
-                    <Button 
                         onClick={() => handleNavigation('/create-campaign')} 
                         className={classes.link} 
                         {...buttonProps}
                     >
                         Contact Us
+                    </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/dashboard')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                         Team Members
                     </Button>
                 </ScrollArea>
             </Drawer>

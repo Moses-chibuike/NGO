@@ -45,7 +45,7 @@ const WaysToFundSection = ({boxProps, subtitleProps}: IProps) => {
                     <Grid.Col lg={4}>
                         <Stack spacing="xs" justify="center" sx={{height: '100%'}}>
                             <TitleBadge title="Make your impact"/>
-                            <Title order={3}>AlaoHelp Gives You More</Title>
+                            <Title order={3}>AlaoMeHelp Gives You More</Title>
                             <Text>Founded on the principles of compassion and solidarity, we strive to create a brighter future for those in need by bridging the gap between generosity and the lives it transforms.</Text>
                         </Stack>
                     </Grid.Col>

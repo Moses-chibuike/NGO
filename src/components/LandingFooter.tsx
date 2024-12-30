@@ -159,7 +159,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
                 <div className={classes.logo}>
                     <Stack align="flex-start">
                         <BrandName size={40}/>
-                        <Text size="sm">AlaoHelp, an independent NGO dedicated to bringing hope and support to some of the most vulnerable members of our society. 
+                        <Text size="sm">AlaoMeHelp, an independent NGO dedicated to bringing hope and support to some of the most vulnerable members of our society. 
                         </Text>
                     </Stack>
                 </div>
@@ -167,7 +167,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
             </Container>
             <Container className={classes.afterFooter} size="lg">
                 <Text size="sm">
-                    © {new Date().getFullYear()} AlaoHelp. All rights reserved.
+                    © {new Date().getFullYear()} AlaoMeHelp. All rights reserved.
                 </Text>
 
                 <Group spacing={0} className={classes.social} position="right" noWrap>

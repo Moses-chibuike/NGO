@@ -49,8 +49,9 @@ const data = [
     {link: '/', label: 'Home'},
     {link: '/how-it-works', label: 'Donate'},
     {link: '/campaigns', label: 'Campaigns'},
-    {link: '/dashboard', label: 'Team Members'},
     {link: '/create-campaign', label: 'Contact Us'},
+    {link: '/dashboard', label: 'Team Members'},
+   
 ];
 
 interface IProps extends FlexProps {
