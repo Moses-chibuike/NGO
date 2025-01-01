@@ -179,41 +179,43 @@ const HowItWorksPage = (): JSX.Element => {
                         {/* Enhanced Donation Form */}
                         <Box mt={48}>
                             {!formSubmitted ? (
-                                <Card radius="md" shadow="sm" p="xl" sx={{ maxWidth: '500px', margin: '0 auto' }}>
+                                <Card radius="md" shadow="sm" p="xl" sx={{ maxWidth: '1200px', margin: '0 auto' }}>
                                     <Title order={3} size={20} mb={24} weight={600} color="dark">
                                         Donation Confirmation Form
                                     </Title>
                                     <Stack spacing="lg">
-                                        <TextInput
-                                            required
-                                            label="Full Name"
-                                            placeholder="Enter your full name"
-                                        />
-                                        <TextInput
-                                            required
-                                            label="Email Address"
-                                            placeholder="Enter your email address"
-                                            type="email"
-                                        />
-                                        <Select
-                                            required
-                                            label="Country/Region"
-                                            placeholder="Select your country"
-                                            data={[
-                                                { value: 'nigeria', label: 'Nigeria' },
-                                                { value: 'usa', label: 'United States' },
-                                                { value: 'uk', label: 'United Kingdom' },
-                                                { value: 'canada', label: 'Canada' },
-                                                { value: 'other', label: 'Other' }
-                                            ]}
-                                        />
-                                        <TextInput
-                                            required
-                                            label="Amount Donated"
-                                            placeholder="Enter amount"
-                                            type="number"
-                                            min={0}
-                                        />
+                                        <SimpleGrid cols={2} spacing="lg" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+                                            <TextInput
+                                                required
+                                                label="Full Name"
+                                                placeholder="Enter your full name"
+                                            />
+                                            <TextInput
+                                                required
+                                                label="Email Address"
+                                                placeholder="Enter your email address"
+                                                type="email"
+                                            />
+                                            <Select
+                                                required
+                                                label="Country/Region"
+                                                placeholder="Select your country"
+                                                data={[
+                                                    { value: 'nigeria', label: 'Nigeria' },
+                                                    { value: 'usa', label: 'United States' },
+                                                    { value: 'uk', label: 'United Kingdom' },
+                                                    { value: 'canada', label: 'Canada' },
+                                                    { value: 'other', label: 'Other' }
+                                                ]}
+                                            />
+                                            <TextInput
+                                                required
+                                                label="Amount Donated"
+                                                placeholder="Enter amount"
+                                                type="number"
+                                                min={0}
+                                            />
+                                        </SimpleGrid>
                                         <Select
                                             required
                                             label="Payment Method"
@@ -229,16 +231,16 @@ const HowItWorksPage = (): JSX.Element => {
                                             minRows={3}
                                         />
                                         <Button 
-                                            fullWidth 
                                             size="md" 
                                             onClick={() => setFormSubmitted(true)}
+                                            sx={{ maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto' }}
                                         >
                                             Confirm Donation
                                         </Button>
                                     </Stack>
                                 </Card>
                             ) : (
-                                <Card radius="md" shadow="sm" p="xl" sx={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
+                                <Card radius="md" shadow="sm" p="xl" sx={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
                                     <Text size="xl" weight={600} color="green" mb="md">
                                         Thank you for your donation!
                                     </Text>
