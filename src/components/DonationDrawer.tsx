@@ -1,200 +1,186 @@
 import {useState} from 'react';
 import {
-    ActionIcon,
-    Anchor,
-    Button,
-    Checkbox,
+    Card,
     Container,
     Drawer,
     DrawerProps,
-    Flex,
-    Group,
-    Image,
-    NumberInput,
-    Paper,
-    PaperProps,
-    Popover,
-    Radio,
-    ScrollArea,
-    Slider,
     Stack,
+    Title,
     Text,
+    Image,
+    Group,
+    Divider,
+    Button,
     TextInput,
-    ThemeIcon,
-    Transition,
-    useMantineTheme
+    Select,
+    Textarea
 } from "@mantine/core";
-import {
-    IconBrandApple,
-    IconBrandGoogle,
-    IconCreditCard,
-    IconCurrencyDollar,
-    IconInfoCircleFilled,
-    IconShieldCheckFilled
-} from "@tabler/icons-react";
-import {CountrySelect} from "./index";
-import {ICampaign} from "../types";
 
 interface IProps extends Pick<DrawerProps, 'opened' | 'onClose' | 'size'> {
     campaign?: ICampaign
-    iconSize: number
 }
 
-const DonationDrawer = ({campaign, iconSize, ...others}: IProps) => {
-    const [payment, setPayment] = useState('');
-    const theme = useMantineTheme()
-
-    const paperProps: PaperProps = {
-        p: "md",
-        withBorder: true,
-        sx: {backgroundColor: theme.white}
-    }
+const DonationDrawer = ({campaign, ...others}: IProps) => {
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     return (
         <Drawer
             position="bottom"
-            title="Make a Donation"
             size="100%"
-            scrollAreaComponent={ScrollArea.Autosize}
             {...others}
         >
-            <Container>
+            <Container sx={{ 
+                backgroundColor: '#f0fff4',
+                minHeight: '100vh',
+                padding: '2rem'
+            }}>
                 <Stack>
-                    <Flex gap="xs" align="center">
+                    <Group position="center" align="center" sx={{ width: '100%' }}>
                         <Image src={campaign?.mainImage} height={96} width={120} fit="contain" radius="sm"/>
-                        <Text>You&apos;re supporting <b>{campaign?.title}</b></Text>
-                    </Flex>
-                    <NumberInput
-                        size="md"
-                        label="Enter your donation"
-                        precision={2}
-                        rightSection={<IconCurrencyDollar size={iconSize}/>}
-                    />
-                    <Paper {...paperProps}>
-                        <Text fw={500}>Tip CrowdUp services</Text>
-                        <Text size="sm" my="xs">CrowdUp has a 0% platform fee for organizers. CrowdUp will continue
-                            offering its services
-                            thanks to donors who will leave an optional amount here:</Text>
-                        <Slider
-                            marks={[
-                                {value: 20, label: '20%'},
-                                {value: 50, label: '50%'},
-                                {value: 80, label: '80%'},
-                            ]}
-                            mb="lg"
-                        />
-                    </Paper>
-                    <Paper {...paperProps}>
-                        <Radio.Group
-                            name="paymentMethod"
-                            label="Payment method"
-                            value={payment}
-                            onChange={setPayment}
-                            mb="md"
-                        >
-                            <Group mt="sm">
-                                <Radio
-                                    value="gpay"
-                                    label={<Group spacing="xs"><IconBrandGoogle size={iconSize}/><Text>Google Pay</Text></Group>}/>
-                                <Radio
-                                    value="applepay"
-                                    label={<Group spacing="xs"><IconBrandApple size={iconSize}/><Text>Apple
-                                        Pay</Text></Group>}/>
-                                <Radio
-                                    value="card"
-                                    label={<Group spacing="xs"><IconCreditCard size={iconSize}/><Text>Credit or
-                                        debit</Text></Group>}/>
-                            </Group>
-                        </Radio.Group>
-                        <Transition
-                            mounted={payment === 'card'}
-                            transition="scale-y"
-                            duration={400}
-                            timingFunction="ease"
-                        >
-                            {(styles) =>
-                                <Paper
-                                    p="md"
-                                    radius="sm"
-                                    mt="sm"
-                                    style={styles}
+                        <Text>You're supporting <b>{campaign?.title}</b></Text>
+                    </Group>
+
+                    <Text align="center" size="sm" mb={30}>
+                        Please make a transfer to any of these account numbers. No amount is too big or small. 
+                        God blesses a cheerful giver, kindly fill the donation confirmation after making a transfer.
+                    </Text>
+
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: '2rem',
+                    }}>
+                        <Card shadow="sm" p="xl" radius="md">
+                            <Title order={3} size={20} mb={24} weight={600}>
+                                Nigerian Account
+                            </Title>
+                            <Stack spacing="lg">
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Bank Name</Text>
+                                    <Text weight={500}>First Bank of Nigeria</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Account Name</Text>
+                                    <Text weight={500}>AlaoMeHelp Foundation</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Account Number</Text>
+                                    <Text weight={500}>1234567890</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Account Type</Text>
+                                    <Text weight={500}>Current Account</Text>
+                                </Group>
+                            </Stack>
+                        </Card>
+
+                        <Card shadow="sm" p="xl" radius="md">
+                            <Title order={3} size={20} mb={24} weight={600}>
+                                International Account
+                            </Title>
+                            <Stack spacing="lg">
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Bank Name</Text>
+                                    <Text weight={500}>Chase Bank</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Account Name</Text>
+                                    <Text weight={500}>AlaoMeHelp International</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Account Number</Text>
+                                    <Text weight={500}>987654321</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Swift Code</Text>
+                                    <Text weight={500}>CHASUS33</Text>
+                                </Group>
+                                <Divider />
+                                <Group position="apart">
+                                    <Text color="dimmed" size="sm">Routing Number</Text>
+                                    <Text weight={500}>021000021</Text>
+                                </Group>
+                            </Stack>
+                        </Card>
+                    </div>
+
+                    {!formSubmitted ? (
+                        <Card shadow="sm" p="xl" radius="md" mt={48}>
+                            <Title order={3} size={20} mb={24} weight={600}>
+                                Donation Confirmation Form
+                            </Title>
+                            <Stack spacing="lg">
+                                <Group grow>
+                                    <TextInput
+                                        required
+                                        label="Full Name"
+                                        placeholder="Enter your full name"
+                                    />
+                                    <TextInput
+                                        required
+                                        label="Email Address"
+                                        placeholder="Enter your email address"
+                                        type="email"
+                                    />
+                                </Group>
+                                <Group grow>
+                                    <Select
+                                        required
+                                        label="Country/Region"
+                                        placeholder="Select your country"
+                                        data={[
+                                            { value: 'nigeria', label: 'Nigeria' },
+                                            { value: 'usa', label: 'United States' },
+                                            { value: 'uk', label: 'United Kingdom' },
+                                            { value: 'other', label: 'Other' }
+                                        ]}
+                                    />
+                                    <TextInput
+                                        required
+                                        label="Amount Donated"
+                                        placeholder="Enter amount"
+                                        type="number"
+                                    />
+                                </Group>
+                                <Select
+                                    required
+                                    label="Payment Method"
+                                    placeholder="Select payment method"
+                                    data={[
+                                        { value: 'bank_transfer', label: 'Bank Transfer' },
+                                        { value: 'wire_transfer', label: 'Wire Transfer' }
+                                    ]}
+                                />
+                                <Textarea
+                                    label="Additional Comments"
+                                    placeholder="Any additional information you'd like to share"
+                                    minRows={3}
+                                />
+                                <Button 
+                                    onClick={() => setFormSubmitted(true)}
+                                    sx={{ maxWidth: '200px', margin: '0 auto' }}
                                 >
-                                    <Stack sx={{width: '100%'}}>
-                                        <TextInput label="Email address"/>
-                                        <Group grow>
-                                            <TextInput label="First name"/>
-                                            <TextInput label="Last name"/>
-                                        </Group>
-                                        <Checkbox label="Use as billing name"/>
-                                        <NumberInput label="Card number"/>
-                                        <Group grow>
-                                            <NumberInput label="MM/YY"/>
-                                            <NumberInput label="CVV"/>
-                                        </Group>
-                                        <TextInput label="Name on card"/>
-                                        <Group grow>
-                                            <CountrySelect/>
-                                            <TextInput label="Postal code"/>
-                                        </Group>
-                                        <Checkbox label="Save card for future donations"/>
-                                    </Stack>
-                                </Paper>
-                            }
-                        </Transition>
-                    </Paper>
-                    <Paper {...paperProps}>
-                        <Stack>
-                            <Group spacing={4}>
-                                <Checkbox label="Don't display my name publicly on the fundraiser."/>
-                                <Popover width={200} position="bottom" withArrow shadow="md">
-                                    <Popover.Target>
-                                        <ActionIcon color="primary" variant="subtle">
-                                            <IconInfoCircleFilled size={iconSize}/>
-                                        </ActionIcon>
-                                    </Popover.Target>
-                                    <Popover.Dropdown>
-                                        <Text size="sm">Your name will only be visible to the organizer, any team
-                                            members and the beneficiary</Text>
-                                    </Popover.Dropdown>
-                                </Popover>
-                            </Group>
-                            <Checkbox
-                                label="Get occasional marketing updates from GoFundMe. You may unsubscribe at any time."/>
-                        </Stack>
-                    </Paper>
-                    <Paper {...paperProps}>
-                        <Stack>
-                            <Text fw={700} size="lg">Your donation</Text>
-                            <Group position="apart">
-                                <Text>Your donation</Text>
-                                <Text fw={500}>$0.00</Text>
-                            </Group>
-                            <Group position="apart">
-                                <Text>CrowdUp tip</Text>
-                                <Text fw={500}>$0.00</Text>
-                            </Group>
-                            <Group position="apart">
-                                <Text>Total due today</Text>
-                                <Text fw={500}>$0.00</Text>
-                            </Group>
-                            <Button size="lg">Donate Now</Button>
-                        </Stack>
-                    </Paper>
-                    <Paper {...paperProps}>
-                        <Stack>
-                            <Text size="sm">By continuing, you agree with <Anchor>CrowdUp terms</Anchor> and <Anchor>privacy
-                                notice.</Anchor></Text>
-                            <Text size="sm">Learn more about <Anchor>pricing and fees.</Anchor></Text>
-                            <Flex gap="sm">
-                                <ThemeIcon size="lg" variant="light" color="blue">
-                                    <IconShieldCheckFilled size={18}/>
-                                </ThemeIcon>
-                                <Text size="sm">We guarantee you a full refund for up to a year in the rare case that
-                                    fraud occurs.&nbsp;<Anchor>See our CrowdUp Giving Guarantee.</Anchor>
-                                </Text>
-                            </Flex>
-                        </Stack>
-                    </Paper>
+                                    Confirm Donation
+                                </Button>
+                            </Stack>
+                        </Card>
+                    ) : (
+                        <Card shadow="sm" p="xl" radius="md" mt={48} sx={{ textAlign: 'center' }}>
+                            <Text size="xl" weight={600} color="green" mb="md">
+                                Thank you for your donation!
+                            </Text>
+                            <Text size="md">
+                                Your generosity helps us continue our mission of supporting those in need. 
+                                May your kindness be richly rewarded.
+                            </Text>
+                        </Card>
+                    )}
                 </Stack>
             </Container>
         </Drawer>
