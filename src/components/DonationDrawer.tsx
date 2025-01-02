@@ -16,6 +16,13 @@ import {
     Textarea
 } from "@mantine/core";
 
+// Define the ICampaign interface
+interface ICampaign {
+    title?: string;
+    mainImage?: string;
+    // Add other campaign properties as needed
+}
+
 interface IProps extends Pick<DrawerProps, 'opened' | 'onClose' | 'size'> {
     campaign?: ICampaign
 }
