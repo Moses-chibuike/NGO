@@ -33,10 +33,10 @@ interface FeatureProps extends PaperProps {
 
 const mockdata = [
     {
-        image: 'https://images.unsplash.com/photo-1509099896299-af46ad97ff57?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Widows',
+        image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        title: 'Entrepreneurs',
         description:
-            'Empowering widows to rebuild their lives through tailored assistance and opportunities.',
+            'Empowering Entrepreneurs to rebuild their lives through tailored assistance and opportunities.',
         action: `Donate`
     },
     {
