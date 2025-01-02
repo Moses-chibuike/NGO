@@ -284,7 +284,7 @@ const CampaignDetailsPage = (): JSX.Element => {
                     </Grid>
                 </Container> : <NotFound/>}
                 <ShareModal opened={opened} onClose={close} campaign={campaign} iconSize={iconSize}/>
-                <DonationDrawer campaign={campaign} opened={donateOpened} onClose={donateClose} iconSize={iconSize}/>
+                <DonationDrawer campaign={campaign} opened={donateOpened} onClose={donateClose} />
             </Box>
         </>
     );
