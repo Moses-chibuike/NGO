@@ -92,7 +92,7 @@ const FeaturesSection = ({boxProps, subtitleProps}: IProps) => {
         <Box {...boxProps}>
             <Box mb="lg">
                 <TitleBadge title="what to expect"/>
-                <Text {...subtitleProps}>We support widows, orphans, single mothers, and school children by providing resources, care, and opportunities to transform their lives.</Text>
+                <Text {...subtitleProps}>We support Entreprenuers, orphans, single mothers, and school children by providing resources, care, and opportunities to transform their lives.</Text>
             </Box>
             <SimpleGrid cols={2} spacing="lg" breakpoints={[{maxWidth: 'md', cols: 2, spacing: 'sm'}]} >
                 {items}

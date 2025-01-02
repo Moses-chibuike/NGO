@@ -156,7 +156,7 @@ const HeroSection = () => {
                 </Container>
 
                 <div className={classes.controls}>
-                    <Button className={classes.control} variant="white" size="lg" component={Link} to="/create-campaign">
+                    <Button className={classes.control} variant="white" size="lg" component={Link} to="/how-it-works">
                         Donate now
                     </Button>
                     <Button className={classes.control} variant="white" size="lg" component={Link} to="/campaigns">
