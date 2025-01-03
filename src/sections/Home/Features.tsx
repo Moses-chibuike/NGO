@@ -36,28 +36,29 @@ const mockdata = [
         image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Entrepreneurs',
         description:
-            'Empowering Entrepreneurs to rebuild their lives through tailored assistance and opportunities.',
+            'Empowering growth by providing tools and resources to help entrepreneurs turn ideas into impactful realities.',
         action: `Donate`
     },
     {
         image: 'https://images.unsplash.com/photo-1497655392221-e645087843da?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Orphans',
         description:
-            `Providing care to ensure orphans thrive and have access to a nurturing environment.`,
+            `Restoring hope by giving orphans access to education, mentorship, and a nurturing environment to rewrite their stories.
+`,
         action: 'Donate'
     },
     {
         image: 'https://images.unsplash.com/photo-1487546331507-fcf8a5d27ab3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'Single Mothers',
         description:
-            `Offering support and relief to single mothers as they navigate the challenges of raising children independently.`,
+            `Helping single mothers overcome challenges with tailored relief and opportunities.`,
         action: 'Donate'
     },
     {
         image: 'https://images.unsplash.com/photo-1473649085228-583485e6e4d7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         title: 'School Children',
         description:
-            `Promoting education by assisting school children with the resources they need to succeed academically.`,
+            `Equipping school children with the resources they need to succeed and dream big.`,
         action: 'Donate'
     },
 ];
@@ -91,8 +92,8 @@ const FeaturesSection = ({boxProps, subtitleProps}: IProps) => {
     return (
         <Box {...boxProps}>
             <Box mb="lg">
-                <TitleBadge title="what to expect"/>
-                <Text {...subtitleProps}>We support Entrepreneurs, orphans, single mothers, and school children by providing resources, care, and opportunities to transform their lives.</Text>
+                <TitleBadge title="who we help"/>
+                <Text {...subtitleProps}>Transforming Lives, One Story at a Time</Text>
             </Box>
             <SimpleGrid cols={2} spacing="lg" breakpoints={[{maxWidth: 'md', cols: 2, spacing: 'sm'}]} >
                 {items}

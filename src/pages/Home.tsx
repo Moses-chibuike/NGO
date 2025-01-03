@@ -47,11 +47,22 @@ const HomePage = (): JSX.Element => {
   {...subTitleProps}
   style={{ color: '#6c757d' }} // Mid-gray color from the Bootstrap palette or use Mantine gray scale
 >
-  Welcome to AlaoMeHelp, an independent NGO dedicated to bringing hope and support to some of the most vulnerable members of our society. Founded on the principles of compassion and solidarity, we strive to create a brighter future for those in need by bridging the gap between generosity and the lives it transforms.
+AlaoMeHelp is an independent NGO with a simple but powerful mission: to transform lives by investing in resilience, courage, and untapped potential. AlaoMeHelp is an Extension of AlaoMe Transformation Inspired by the personal journey of its founder, Oluseyi IfeanyiChukwu Alao, AlaoMeHelp exists to ensure that no story of hope and perseverance goes unheard or unsupported.
 
-  At AlaoMeHelp, we focus our efforts on supporting widows, empowering them to rebuild their lives through tailored assistance and opportunities. We provide care and resources to orphans, ensuring they thrive and have access to a nurturing environment. Our support extends to single mothers, offering relief as they navigate the challenges of raising children independently. We are also committed to promoting education by assisting school children with the resources they need to succeed academically.
+Oluseyi’s life has been a testament to the strength of the human spirit. After losing his mother at the age of 10, he faced unimaginable pain but turned it into a purpose-driven life. His experiences led to the creation of the AlaoMe Transformation Program, which has already impacted countless individuals by helping them discover faith, master their mindset, and find purpose. Building on this foundation, AlaoMeHelp was born to create even greater impact by reaching the vulnerable and resilient in our communities.
 
-  We believe that everyone deserves a chance to rise above life's challenges, and our mission is to make that possible. By gathering funds from the general public, we ensure transparency and direct impact, channeling your contributions to where they matter most. Join us in making a difference—together, we can transform lives and build stronger, more resilient communities.
+AlaoMeHelp stands for:
+
+Orphans who refuse to let their circumstances define them.
+
+Single mothers working tirelessly to give their children a better future.
+
+Innovators and Entrepreneurs who have ideas that could change their communities and the world.
+
+At AlaoMeHelp, every contribution makes a difference. It’s not just about offering support—it’s about creating opportunities, empowering communities, and rewriting futures. Together, we transform resilience into hope and challenges into triumphs.
+
+Join us in this journey. Your support helps build brighter futures, one story at a time. Let’s create a world where no one has to walk their path alone…..
+
 </Text>       </Box>
                     <FeaturesSection boxProps={boxProps} subtitleProps={subTitleProps}/>
                     <StatsSection boxProps={boxProps} titleProps={titleProps} subtitleProps={subTitleProps}/>

@@ -159,7 +159,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
                 <div className={classes.logo}>
                     <Stack align="flex-start">
                         <BrandName size={40}/>
-                        <Text size="sm">AlaoMeHelp, an independent NGO dedicated to bringing hope and support to some of the most vulnerable members of our society. 
+                        <Text size="sm">AlaoMeHelp is an independent NGO dedicated to turning resilience into hope. We bring support, resources, and opportunities to the most vulnerable members of society, helping them rise and thrive. 
                         </Text>
                     </Stack>
                 </div>

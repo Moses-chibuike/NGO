@@ -135,22 +135,20 @@ const HeroSection = () => {
                             </Group>
                         </Center>
                         <Title className={classes.title}>
-                            Help the people, make <Text
+                        Transforming Lives, One <Text
                             component="span"
                             inherit
                             variant="gradient"
                             gradient={{from: theme.colors.lime[5], to: theme.colors.green[4]}}
-                        >big changes</Text> and <Text
+                        >Story at a </Text> Time <Text
                             component="span"
                             inherit
                             variant="gradient"
                             gradient={{from: theme.colors.green[4], to: theme.colors.lime[5]}}
-                        >help this world.</Text>
+                        >everyday.</Text>
                         </Title>
                         <Text size="lg" className={classes.description}>
-                            Join us and be part of something special. Together we can make a difference and bring your
-                            dreams to
-                            reality.
+                        AlaoMe Transformation is creating hope and changing lives, one story at a time.
                         </Text>
                     </Stack>
                 </Container>
