@@ -31,6 +31,49 @@ import { Link } from "react-router-dom";
 
 const HowItWorksPage = (): JSX.Element => {
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        country: '',
+        amount: '',
+        paymentMethod: '',
+        comments: ''
+    });
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        
+        const formElement = e.target as HTMLFormElement;
+        
+        try {
+            const response = await fetch('https://formspree.io/f/xgvvpzvk', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: new FormData(formElement)
+            });
+
+            if (response.ok) {
+                setFormSubmitted(true);
+            } else {
+                alert('There was an error submitting the form. Please try again.');
+            }
+        } catch (error) {
+            alert('There was an error submitting the form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const boxProps: BoxProps = {
         mt: 96,
@@ -183,61 +226,82 @@ const HowItWorksPage = (): JSX.Element => {
                                     <Title order={3} size={20} mb={24} weight={600} color="dark">
                                         Donation Confirmation Form
                                     </Title>
-                                    <Stack spacing="lg">
-                                        <SimpleGrid cols={2} spacing="lg" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-                                            <TextInput
-                                                required
-                                                label="Full Name"
-                                                placeholder="Enter your full name"
-                                            />
-                                            <TextInput
-                                                required
-                                                label="Email Address"
-                                                placeholder="Enter your email address"
-                                                type="email"
-                                            />
+                                    <form onSubmit={handleSubmit}>
+                                        <Stack spacing="lg">
+                                            <SimpleGrid cols={2} spacing="lg" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+                                                <TextInput
+                                                    required
+                                                    name="fullName"
+                                                    label="Full Name"
+                                                    placeholder="Enter your full name"
+                                                    value={formData.fullName}
+                                                    onChange={(e) => handleInputChange('fullName', e.target.value)}
+                                                />
+                                                <TextInput
+                                                    required
+                                                    name="email"
+                                                    label="Email Address"
+                                                    placeholder="Enter your email address"
+                                                    type="email"
+                                                    value={formData.email}
+                                                    onChange={(e) => handleInputChange('email', e.target.value)}
+                                                />
+                                                <Select
+                                                    required
+                                                    name="country"
+                                                    label="Country/Region"
+                                                    placeholder="Select your country"
+                                                    value={formData.country}
+                                                    onChange={(value) => handleInputChange('country', value || '')}
+                                                    data={[
+                                                        { value: 'nigeria', label: 'Nigeria' },
+                                                        { value: 'usa', label: 'United States' },
+                                                        { value: 'uk', label: 'United Kingdom' },
+                                                        { value: 'canada', label: 'Canada' },
+                                                        { value: 'other', label: 'Other' }
+                                                    ]}
+                                                />
+                                                <TextInput
+                                                    required
+                                                    name="amount"
+                                                    label="Amount Donated"
+                                                    placeholder="Enter amount"
+                                                    type="number"
+                                                    min={0}
+                                                    value={formData.amount}
+                                                    onChange={(e) => handleInputChange('amount', e.target.value)}
+                                                />
+                                            </SimpleGrid>
                                             <Select
                                                 required
-                                                label="Country/Region"
-                                                placeholder="Select your country"
+                                                name="paymentMethod"
+                                                label="Payment Method"
+                                                placeholder="Select payment method"
+                                                value={formData.paymentMethod}
+                                                onChange={(value) => handleInputChange('paymentMethod', value || '')}
                                                 data={[
-                                                    { value: 'nigeria', label: 'Nigeria' },
-                                                    { value: 'usa', label: 'United States' },
-                                                    { value: 'uk', label: 'United Kingdom' },
-                                                    { value: 'canada', label: 'Canada' },
-                                                    { value: 'other', label: 'Other' }
+                                                    { value: 'bank_transfer', label: 'Bank Transfer' },
+                                                    { value: 'wire_transfer', label: 'Wire Transfer' }
                                                 ]}
                                             />
-                                            <TextInput
-                                                required
-                                                label="Amount Donated"
-                                                placeholder="Enter amount"
-                                                type="number"
-                                                min={0}
+                                            <Textarea
+                                                name="comments"
+                                                label="Additional Comments"
+                                                placeholder="Any additional information you'd like to share"
+                                                minRows={3}
+                                                value={formData.comments}
+                                                onChange={(e) => handleInputChange('comments', e.target.value)}
                                             />
-                                        </SimpleGrid>
-                                        <Select
-                                            required
-                                            label="Payment Method"
-                                            placeholder="Select payment method"
-                                            data={[
-                                                { value: 'bank_transfer', label: 'Bank Transfer' },
-                                                { value: 'wire_transfer', label: 'Wire Transfer' }
-                                            ]}
-                                        />
-                                        <Textarea
-                                            label="Additional Comments"
-                                            placeholder="Any additional information you'd like to share"
-                                            minRows={3}
-                                        />
-                                        <Button 
-                                            size="md" 
-                                            onClick={() => setFormSubmitted(true)}
-                                            sx={{ maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto' }}
-                                        >
-                                            Confirm Donation
-                                        </Button>
-                                    </Stack>
+                                            <Button 
+                                                type="submit"
+                                                size="md" 
+                                                loading={isSubmitting}
+                                                sx={{ maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto' }}
+                                            >
+                                                {isSubmitting ? 'Sending...' : 'Confirm Donation'}
+                                            </Button>
+                                        </Stack>
+                                    </form>
                                 </Card>
                             ) : (
                                 <Card radius="md" shadow="sm" p="xl" sx={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>

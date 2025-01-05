@@ -135,7 +135,7 @@ const HeroSection = () => {
                             </Group>
                         </Center>
                         <Title className={classes.title}>
-                        AlaoMeHelp - Transforming Lives, One <Text
+                        Transforming Lives, One <Text
                             component="span"
                             inherit
                             variant="gradient"

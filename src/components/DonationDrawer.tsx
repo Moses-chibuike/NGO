@@ -29,7 +29,50 @@ interface IProps extends Pick<DrawerProps, 'opened' | 'onClose' | 'size'> {
 
 const DonationDrawer = ({campaign, ...others}: IProps) => {
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        country: '',
+        amount: '',
+        paymentMethod: '',
+        comments: ''
+    });
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        
+        const formElement = e.target as HTMLFormElement;
+        
+        try {
+            const response = await fetch('https://formspree.io/f/xgvvpzvk', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: new FormData(formElement)
+            });
+
+            if (response.ok) {
+                setFormSubmitted(true);
+            } else {
+                alert('There was an error submitting the form. Please try again.');
+            }
+        } catch (error) {
+            alert('There was an error submitting the form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <Drawer
@@ -152,71 +195,92 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
                             <Title order={3} size={isMobile ? 18 : 20} mb={isMobile ? 16 : 24} weight={600}>
                                 Donation Confirmation Form
                             </Title>
-                            <Stack spacing={isMobile ? "md" : "lg"}>
-                                <Stack spacing={isMobile ? "xs" : "md"}>
-                                    <TextInput
-                                        required
-                                        label="Full Name"
-                                        placeholder="Enter your full name"
-                                        size={isMobile ? "sm" : "md"}
-                                    />
-                                    <TextInput
-                                        required
-                                        label="Email Address"
-                                        placeholder="Enter your email address"
-                                        type="email"
-                                        size={isMobile ? "sm" : "md"}
-                                    />
-                                </Stack>
-                                <Stack spacing={isMobile ? "xs" : "md"}>
+                            <form onSubmit={handleSubmit}>
+                                <Stack spacing={isMobile ? "md" : "lg"}>
+                                    <Stack spacing={isMobile ? "xs" : "md"}>
+                                        <TextInput
+                                            required
+                                            name="fullName"
+                                            label="Full Name"
+                                            placeholder="Enter your full name"
+                                            size={isMobile ? "sm" : "md"}
+                                            value={formData.fullName}
+                                            onChange={(e) => handleInputChange('fullName', e.target.value)}
+                                        />
+                                        <TextInput
+                                            required
+                                            name="email"
+                                            label="Email Address"
+                                            placeholder="Enter your email address"
+                                            type="email"
+                                            size={isMobile ? "sm" : "md"}
+                                            value={formData.email}
+                                            onChange={(e) => handleInputChange('email', e.target.value)}
+                                        />
+                                    </Stack>
+                                    <Stack spacing={isMobile ? "xs" : "md"}>
+                                        <Select
+                                            required
+                                            name="country"
+                                            label="Country/Region"
+                                            placeholder="Select your country"
+                                            data={[
+                                                { value: 'nigeria', label: 'Nigeria' },
+                                                { value: 'usa', label: 'United States' },
+                                                { value: 'uk', label: 'United Kingdom' },
+                                                { value: 'other', label: 'Other' }
+                                            ]}
+                                            size={isMobile ? "sm" : "md"}
+                                            value={formData.country}
+                                            onChange={(value) => handleInputChange('country', value || '')}
+                                        />
+                                        <TextInput
+                                            required
+                                            name="amount"
+                                            label="Amount Donated"
+                                            placeholder="Enter amount"
+                                            type="number"
+                                            size={isMobile ? "sm" : "md"}
+                                            value={formData.amount}
+                                            onChange={(e) => handleInputChange('amount', e.target.value)}
+                                        />
+                                    </Stack>
                                     <Select
                                         required
-                                        label="Country/Region"
-                                        placeholder="Select your country"
+                                        name="paymentMethod"
+                                        label="Payment Method"
+                                        placeholder="Select payment method"
                                         data={[
-                                            { value: 'nigeria', label: 'Nigeria' },
-                                            { value: 'usa', label: 'United States' },
-                                            { value: 'uk', label: 'United Kingdom' },
-                                            { value: 'other', label: 'Other' }
+                                            { value: 'bank_transfer', label: 'Bank Transfer' },
+                                            { value: 'wire_transfer', label: 'Wire Transfer' }
                                         ]}
                                         size={isMobile ? "sm" : "md"}
+                                        value={formData.paymentMethod}
+                                        onChange={(value) => handleInputChange('paymentMethod', value || '')}
                                     />
-                                    <TextInput
-                                        required
-                                        label="Amount Donated"
-                                        placeholder="Enter amount"
-                                        type="number"
+                                    <Textarea
+                                        name="comments"
+                                        label="Additional Comments"
+                                        placeholder="Any additional information you'd like to share"
+                                        minRows={isMobile ? 2 : 3}
                                         size={isMobile ? "sm" : "md"}
+                                        value={formData.comments}
+                                        onChange={(e) => handleInputChange('comments', e.target.value)}
                                     />
+                                    <Button 
+                                        type="submit"
+                                        sx={{ 
+                                            maxWidth: isMobile ? '100%' : '200px',
+                                            margin: '0 auto',
+                                            marginTop: isMobile ? '1rem' : '1.5rem'
+                                        }}
+                                        size={isMobile ? "sm" : "md"}
+                                        loading={isSubmitting}
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Confirm Donation'}
+                                    </Button>
                                 </Stack>
-                                <Select
-                                    required
-                                    label="Payment Method"
-                                    placeholder="Select payment method"
-                                    data={[
-                                        { value: 'bank_transfer', label: 'Bank Transfer' },
-                                        { value: 'wire_transfer', label: 'Wire Transfer' }
-                                    ]}
-                                    size={isMobile ? "sm" : "md"}
-                                />
-                                <Textarea
-                                    label="Additional Comments"
-                                    placeholder="Any additional information you'd like to share"
-                                    minRows={isMobile ? 2 : 3}
-                                    size={isMobile ? "sm" : "md"}
-                                />
-                                <Button 
-                                    onClick={() => setFormSubmitted(true)}
-                                    sx={{ 
-                                        maxWidth: isMobile ? '100%' : '200px',
-                                        margin: '0 auto',
-                                        marginTop: isMobile ? '1rem' : '1.5rem'
-                                    }}
-                                    size={isMobile ? "sm" : "md"}
-                                >
-                                    Confirm Donation
-                                </Button>
-                            </Stack>
+                            </form>
                         </Card>
                     ) : (
                         <Card 
@@ -232,11 +296,11 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
                                 color="green" 
                                 mb={isMobile ? "sm" : "md"}
                             >
-                                Thank you for your donation!
+                                Sent Successfully! Thank you for your donation!
                             </Text>
                             <Text size={isMobile ? "sm" : "md"}>
                                 Your generosity helps us continue our mission of supporting those in need. 
-                                May your kindness be richly rewarded.
+                                May your kindness be richly rewarded. You will receive a confirmation email shortly.
                             </Text>
                         </Card>
                     )}
