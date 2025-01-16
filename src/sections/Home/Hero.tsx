@@ -45,6 +45,9 @@ const useStyles = createStyles((theme) => ({
         paddingRight: theme.spacing.md,
         color: theme.white,
         textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: rem(8),
 
         [theme.fn.smallerThan('md')]: {
             fontSize: rem(48),
@@ -52,7 +55,7 @@ const useStyles = createStyles((theme) => ({
 
         [theme.fn.smallerThan('sm')]: {
             fontSize: rem(28),
-            textAlign: 'left',
+            textAlign: 'center',
             fontWeight: 700,
             padding: 0
         },
@@ -69,7 +72,7 @@ const useStyles = createStyles((theme) => ({
 
         [theme.fn.smallerThan('sm')]: {
             fontSize: theme.fontSizes.md,
-            textAlign: 'left',
+            textAlign: 'center',
         },
     },
 
@@ -135,20 +138,23 @@ const HeroSection = () => {
                             </Group>
                         </Center>
                         <Title className={classes.title}>
-                        Transforming Lives, One <Text
-                            component="span"
-                            inherit
-                            variant="gradient"
-                            gradient={{from: theme.colors.lime[5], to: theme.colors.green[4]}}
-                        >Story </Text> at a <Text
-                            component="span"
-                            inherit
-                            variant="gradient"
-                            gradient={{from: theme.colors.green[4], to: theme.colors.lime[5]}}
-                        >Time.</Text>
+                            <Text inherit>Transforming Lives,</Text>
+                            <Text inherit>
+                                One <Text
+                                    component="span"
+                                    inherit
+                                    variant="gradient"
+                                    gradient={{from: theme.colors.lime[5], to: theme.colors.green[4]}}
+                                >Story </Text> at a <Text
+                                    component="span"
+                                    inherit
+                                    variant="gradient"
+                                    gradient={{from: theme.colors.green[4], to: theme.colors.lime[5]}}
+                                >Time.</Text>
+                            </Text>
                         </Title>
                         <Text size="lg" className={classes.description}>
-                        AlaoMe Transformation is creating hope and changing lives, one story at a time.
+                            AlaoMe Transformation is creating hope and changing lives, one story at a time.
                         </Text>
                     </Stack>
                 </Container>
