@@ -141,41 +141,7 @@ const HowItWorksPage = (): JSX.Element => {
                             maxWidth: '1200px',
                             margin: '0 auto'
                         }}>
-                            <Card
-                                radius="md"
-                                shadow="sm"
-                                p="xl"
-                                sx={{
-                                    backgroundColor: 'white',
-                                    height: '100%',
-                                    border: '1px solid #e9ecef'
-                                }}
-                            >
-                                <Title order={3} size={20} mb={24} weight={600} color="dark">
-                                    Nigerian Account
-                                </Title>
-                                <Stack spacing="lg">
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Bank Name</Text>
-                                        <Text weight={500}>First Bank of Nigeria</Text>
-                                    </Group>
-                                    <Divider />
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Account Name</Text>
-                                        <Text weight={500}>AlaoMeHelp Foundation</Text>
-                                    </Group>
-                                    <Divider />
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Account Number</Text>
-                                        <Text weight={500}>1234567890</Text>
-                                    </Group>
-                                    <Divider />
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Account Type</Text>
-                                        <Text weight={500}>Current Account</Text>
-                                    </Group>
-                                </Stack>
-                            </Card>
+                            
 
                             <Card
                                 radius="md"
@@ -188,32 +154,22 @@ const HowItWorksPage = (): JSX.Element => {
                                 }}
                             >
                                 <Title order={3} size={20} mb={24} weight={600} color="dark">
-                                    International Account
+                                    Bank Account Details
                                 </Title>
                                 <Stack spacing="lg">
                                     <Group position="apart">
                                         <Text color="dimmed" size="sm">Bank Name</Text>
-                                        <Text weight={500}>Chase Bank</Text>
+                                        <Text weight={500}>First Bank of Nigeria</Text>
                                     </Group>
                                     <Divider />
                                     <Group position="apart">
                                         <Text color="dimmed" size="sm">Account Name</Text>
-                                        <Text weight={500}>AlaoMeHelp International</Text>
+                                        <Text weight={500}>Alao Oluseyi Joseph</Text>
                                     </Group>
                                     <Divider />
                                     <Group position="apart">
                                         <Text color="dimmed" size="sm">Account Number</Text>
-                                        <Text weight={500}>987654321</Text>
-                                    </Group>
-                                    <Divider />
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Swift Code</Text>
-                                        <Text weight={500}>CHASUS33</Text>
-                                    </Group>
-                                    <Divider />
-                                    <Group position="apart">
-                                        <Text color="dimmed" size="sm">Routing Number</Text>
-                                        <Text weight={500}>021000021</Text>
+                                        <Text weight={500}>3083465203</Text>
                                     </Group>
                                 </Stack>
                             </Card>
