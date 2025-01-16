@@ -163,7 +163,7 @@ const HowItWorksPage = (): JSX.Element => {
                                     </Group>
                                     <Divider />
                                     <Group position="apart">
-                                        <Text color="dimmed" size="sm">Account Name</Text>
+                                        <Text color="dimmed" size="sm">Name</Text>
                                         <Text weight={500}>Alao Oluseyi Joseph</Text>
                                     </Group>
                                     <Divider />
