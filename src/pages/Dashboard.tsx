@@ -60,58 +60,31 @@ const DashboardPage = () => {
 
     const teamMembers = [
         {
-            name: 'Sarah Johnson',
-            role: 'Chief Executive Officer',
-            avatar: '/api/placeholder/150/150',
+            name: 'Alao Ifeanyi Oluseyi',
+            role: 'Founder',
+            avatar: '/assets/img/8.png',
             bio: 'Leading our mission to create positive impact through innovative solutions.',
             linkedin: '#',
             twitter: '#',
             email: 'sarah@example.com'
         },
         {
-            name: 'Michael Chen',
-            role: 'Technical Director',
-            avatar: '/api/placeholder/150/150',
+            name: 'Ezechukwu chibuike moses',
+            role: 'Co-founder',
+            avatar: '/assets/img/9.png',
             bio: 'Driving technological advancement and digital transformation initiatives.',
             linkedin: '#',
             twitter: '#',
             email: 'michael@example.com'
         },
         {
-            name: 'Emma Williams',
+            name: 'Coming Soon',
             role: 'Community Manager',
             avatar: '/api/placeholder/150/150',
             bio: 'Building and nurturing our vibrant community of supporters and partners.',
             linkedin: '#',
             twitter: '#',
             email: 'emma@example.com'
-        },
-        {
-            name: 'David Kumar',
-            role: 'Creative Director',
-            avatar: '/api/placeholder/150/150',
-            bio: 'Bringing our vision to life through compelling visual storytelling.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'david@example.com'
-        },
-        {
-            name: 'Lisa Martinez',
-            role: 'Operations Manager',
-            avatar: '/api/placeholder/150/150',
-            bio: 'Ensuring smooth execution of our projects and daily operations.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'lisa@example.com'
-        },
-        {
-            name: 'James Wilson',
-            role: 'Financial Advisor',
-            avatar: '/api/placeholder/150/150',
-            bio: 'Managing our financial strategy and sustainable growth initiatives.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'james@example.com'
         }
     ];
 
