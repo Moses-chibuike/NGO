@@ -60,10 +60,10 @@ const DashboardPage = () => {
 
     const teamMembers = [
         {
-            name: 'Alao Ifeanyi Oluseyi',
+            name: 'Oluseyi Ifeanyichukwu Alao',
             role: 'Founder',
             avatar: '/assets/img/8.png',
-            bio: 'Leading our mission to create positive impact through innovative solutions.',
+            bio: 'Leading our mission to transform lives through purpose and innovation.',
             linkedin: '#',
             twitter: '#',
             email: 'sarah@example.com'
