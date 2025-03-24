@@ -133,7 +133,7 @@ const HowItWorksPage = (): JSX.Element => {
                         >
                             <Select
                                 value={donationType}
-                                onChange={setDonationType}
+                                onChange={(value) => value !== null && setDonationType(value)}
                                 data={donationTypes}
                                 size="md"
                                 mb="md"
