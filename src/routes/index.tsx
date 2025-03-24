@@ -8,6 +8,8 @@ import {
     Error404Page,
     HomePage,
     HowItWorksPage,
+    PayPage,
+    PaymentSummaryPage,
     LoginPage,
     SignupPage
 } from "../pages";
@@ -48,6 +50,22 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "paypage",
+        element: <PublicLayout/>,
+        errorElement: <Error404Page/>,
+        children: [
+            {
+                path: '',
+                index: true,
+                element: <PayPage/>
+            }
+        ]
+    },
+    {
+        path: '/payment-summary',
+        element: <PaymentSummaryPage />
+      },
     {
         path: "campaigns",
         element: <PublicLayout/>,
