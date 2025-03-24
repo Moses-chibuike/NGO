@@ -81,7 +81,7 @@ const HowItWorksPage = (): JSX.Element => {
                             size="lg"
                             sx={{ maxWidth: '600px', marginBottom: '2rem' }}
                         >
-                            ETERNA is non-profit, every cent we make goes straight back into making the world a better place, help us do that.
+                            AlaoMeHelp is non-profit, every cent we make goes straight back into making the world a better place, help us do that.
                         </Text>
 
                         {/* Donation Amount Buttons */}

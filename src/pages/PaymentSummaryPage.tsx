@@ -117,10 +117,10 @@ const PaymentSummaryPage = (): JSX.Element => {
             <Helmet>
                 <title>
                     {showSuccessView 
-                        ? 'Thank You | ETERNA' 
+                        ? 'Thank You | AlaoMeHelp' 
                         : showTransferDetails 
-                            ? 'Payment Details | ETERNA' 
-                            : 'Payment Summary | ETERNA'}
+                            ? 'Payment Details | AlaoMeHelp' 
+                            : 'Payment Summary | AlaoMeHelp'}
                 </title>
             </Helmet>
             
@@ -236,7 +236,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                             >
                                 <Group position="apart" mb="md">
                                     <Box>
-                                        <Title order={3}>ETERNA</Title>
+                                        <Title order={3}>AlaoMeHelp</Title>
                                         <Text size="sm" color="dimmed">Non-profit Organization</Text>
                                     </Box>
                                     <Box>

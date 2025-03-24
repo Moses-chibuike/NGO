@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {ICampaign} from "../types";
 import campaignsData from "../data/Campaigns.json";
@@ -28,7 +28,7 @@ import {
 } from "@mantine/core";
 import {IconFlag, IconHeart, IconHeartFilled, IconSeparator, IconShare} from "@tabler/icons-react";
 import {useDisclosure, useMediaQuery, useToggle} from "@mantine/hooks";
-import {BackButton, DonationDrawer, NotFound, ShareModal, UserCard} from "../components";
+import {BackButton, ShareModal, UserCard, NotFound} from "../components";
 import {Helmet} from "react-helmet";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -39,9 +39,9 @@ dayjs.extend(localizedFormat);
 
 const CampaignDetailsPage = (): JSX.Element => {
     const {id} = useParams();
+    const navigate = useNavigate(); // Add the navigate hook
     const [campaign, setCampaign] = useState<ICampaign>();
     const [opened, {open, close}] = useDisclosure(false);
-    const [donateOpened, {open: donateOpen, close: donateClose}] = useDisclosure(false);
     const [following, setFollowing] = useToggle();
     const matchesMobile = useMediaQuery('(max-width: 768px)');
 
@@ -68,6 +68,11 @@ const CampaignDetailsPage = (): JSX.Element => {
     useEffect(() => {
         setCampaign(campaignsData.data.find(_ => _.id === id))
     }, [id]);
+
+    // New function to handle donation button click
+    const handleDonateClick = () => {
+        navigate('/how-it-works'); // Navigate to the HowItWorksPage
+    };
 
     return (
         <>
@@ -134,7 +139,8 @@ const CampaignDetailsPage = (): JSX.Element => {
                                                 <Text fw={500}>{campaign?.contributors} Donors</Text>
                                             </Flex>
                                             <Flex align="center" gap="xs">
-                                                <Button onClick={donateOpen} fullWidth>Donate</Button>
+                                                {/* Update mobile donate button */}
+                                                <Button onClick={handleDonateClick} fullWidth>Donate</Button>
                                                 <ActionIcon
                                                     variant="subtle"
                                                     onClick={open}
@@ -210,7 +216,8 @@ const CampaignDetailsPage = (): JSX.Element => {
                                                 <Text fw={500}>{campaign?.daysLeft}% Funded</Text>
                                                 <Text fw={500}>{campaign?.contributors} Donors</Text>
                                             </Flex>
-                                            <Button size="xl" onClick={donateOpen}>Donate</Button>
+                                            {/* Update desktop donate button */}
+                                            <Button size="xl" onClick={handleDonateClick}>Donate</Button>
                                             <Button
                                                 leftIcon={<IconShare size={iconSize}/>}
                                                 variant="outline"
@@ -284,7 +291,7 @@ const CampaignDetailsPage = (): JSX.Element => {
                     </Grid>
                 </Container> : <NotFound/>}
                 <ShareModal opened={opened} onClose={close} campaign={campaign} iconSize={iconSize}/>
-                <DonationDrawer campaign={campaign} opened={donateOpened} onClose={donateClose} />
+                {/* Remove DonationDrawer since we're navigating instead */}
             </Box>
         </>
     );
