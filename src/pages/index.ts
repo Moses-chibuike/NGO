@@ -9,6 +9,7 @@ import DetailError404Page from "./DetailError404";
 import LoginPage from "./Login";
 import SignupPage from "./Signup";
 import DashboardPage from "./Dashboard";
+import AshbayPage from "./Ashbay";
 import CreateCampaignPage from "./CreateCampaign";
 
 export {
@@ -23,5 +24,6 @@ export {
     LoginPage,
     SignupPage,
     DashboardPage,
+    AshbayPage,
     CreateCampaignPage
 }

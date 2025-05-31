@@ -4,6 +4,7 @@ import {
     CampaignsPage,
     CreateCampaignPage,
     DashboardPage,
+    AshbayPage,
     DetailError404Page,
     Error404Page,
     HomePage,
@@ -92,6 +93,18 @@ const router = createBrowserRouter([
                 path: '',
                 index: true,
                 element: <DashboardPage/>
+            }
+        ]
+    },
+    {
+        path: "ashbay",
+        element: <DashboardLayout/>,
+        errorElement: <Error404Page/>,
+        children: [
+            {
+                path: '',
+                index: true,
+                element: <AshbayPage/>
             }
         ]
     },
