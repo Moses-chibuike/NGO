@@ -314,6 +314,13 @@ const LandingNavbar = ({compressed}: IProps) => {
                     >
                          Team Members
                     </Button>
+                    <Button 
+                        onClick={() => handleNavigation('/ashbay')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Transformation
+                    </Button>
                 </ScrollArea>
             </Drawer>
 
