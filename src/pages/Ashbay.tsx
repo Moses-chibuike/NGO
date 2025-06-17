@@ -361,16 +361,21 @@ const useStyles = createStyles((theme) => ({
 
     founderBadge: {
         position: 'absolute',
-        top: rem(18),
-        left: rem(18),
+        bottom: rem(18),
+        left: '50%',
+        transform: 'translateX(-50%)',
         backgroundColor: 'rgba(0,0,0,0.8)',
         color: 'white',
         padding: rem(14.4),
         borderRadius: rem(7.2),
         backdropFilter: 'blur(10px)',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         [theme.fn.smallerThan('sm')]: {
-            top: rem(12),
-            left: rem(12),
+            bottom: rem(12),
             padding: rem(10),
         },
     },
@@ -631,29 +636,22 @@ const AshbayPage = () => {
                                 <Title className={classes.storyTitle} style={{ textAlign: 'center', marginTop: '2rem' }}>My Story</Title>
                                 
                                 <Text className={classes.storyTextUnderImage}>
-                                    The turning point came with a profound personal loss—the mysterious death of his best friend, 
-                                    his beloved grandmother and one of his Aunts who raised him. Struggling with depression and 
-                                    numbing the pain with alcohol, Oluseyi realized he needed a transformation. He made a 
-                                    courageous decision: he quit his two dead-end jobs, went back to school full-time, and began 
-                                    focusing on personal growth. This shift didn't just change his life—it became the foundation 
-                                    of his future success.
-                                </Text>
-                                <Text className={classes.storyTextUnderImage}>
-                                    Oluseyi took his life lessons and began sharing them, creating transformative content centered 
-                                    around personal growth, self-love, relationships, and spirituality. In less than a year, his social 
-                                    media following grew from 900 to 5,000, and what started as sharing his story became a 
-                                    thriving mentorship and coaching practice.
+                                    Oluseyi IfeanyiChukwu Alao's journey began with a bold leap—a solo 
+                                    migration to New York City eight years ago. Raised by his grandparents after losing both parents at a young age, Oluseyi 
+                                    had already learned the weight of responsibility, but nothing could prepare him for the immense 
+                                    challenges of adjusting to life in a new country. 
                                 </Text>
                             </Grid.Col>
                             <Grid.Col md={6} sm={12} orderSm={1} orderMd={2}>
                                 {/* Title removed from here */}
                                 <Text className={classes.storyText}>
-                                    Oluseyi IfeanyiChukwu Alao's journey began with a bold leap—a solo 
-                                    migration to New York City eight years ago. Raised by his grandparents after losing both parents at a young age, Oluseyi 
-                                    had already learned the weight of responsibility, but nothing could prepare him for the immense 
-                                    challenges of adjusting to life in a new country. Between juggling long hours at multiple jobs, 
+                                    Between juggling long hours at multiple jobs, 
                                     finishing business school, and providing financial support for his son, grandmother, and 
                                     extended family back home, his resilience was constantly tested.
+                                    Oluseyi took his life lessons and began sharing them, creating transformative content centered 
+                                    around personal growth, self-love, relationships, and spirituality. In less than a year, his social 
+                                    media following grew from 900 to 5,000, and what started as sharing his story became a 
+                                    thriving mentorship and coaching practice.
                                 </Text>
                                 <Text className={classes.storyText}>
                                     The turning point came with a profound personal loss—the mysterious death of his best friend, 

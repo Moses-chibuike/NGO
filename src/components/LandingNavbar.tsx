@@ -259,7 +259,7 @@ const LandingNavbar = ({compressed}: IProps) => {
                                 Team members
                             </Button>
                             <Button component={Link} to="/ashbay" className={classes.link} {...buttonProps}>
-                                Transformation
+                                AlaoMeHelp
                             </Button>
                         </Flex>
                         <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop}/>

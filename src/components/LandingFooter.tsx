@@ -10,7 +10,7 @@ import {BrandName} from "./index";
 
 const useStyles = createStyles((theme) => ({
     footer: {
-        marginTop: rem(120),
+        marginTop: rem(0),
         paddingTop: `calc(${theme.spacing.xl} * 2)`,
         paddingBottom: `calc(${theme.spacing.xl} * 2)`,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
@@ -167,7 +167,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
             </Container>
             <Container className={classes.afterFooter} size="lg">
                 <Text size="sm">
-                    © {new Date().getFullYear()} AlaoMeHelp. All rights reserved.
+                    © {new Date().getFullYear()} AlaoMe. All rights reserved.
                 </Text>
 
                 <Group spacing={0} className={classes.social} position="right" noWrap>
