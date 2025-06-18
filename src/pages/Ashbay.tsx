@@ -33,6 +33,7 @@ const useStyles = createStyles((theme) => ({
         backgroundImage: 'linear-gradient(rgba(88, 88, 88, 0.25), rgba(32, 32, 32, 0.03)), url("/assets/img/Alao.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -40,6 +41,21 @@ const useStyles = createStyles((theme) => ({
         [theme.fn.smallerThan('md')]: {
             height: '100vh',
             minHeight: rem(500),
+        },
+        [theme.fn.smallerThan('sm')]: {
+            height: '100vh',
+            minHeight: rem(500),
+            // Ensure proper background display on mobile
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'scroll', // Better performance on mobile
+        },
+        // For very small screens
+        [theme.fn.smallerThan('xs')]: {
+            height: '100vh',
+            minHeight: rem(450),
+            backgroundPosition: 'center center',
         },
     },
 
@@ -56,9 +72,21 @@ const useStyles = createStyles((theme) => ({
             width: rem(180),
         },
         [theme.fn.smallerThan('sm')]: {
-            top: rem(15),
-            left: rem(15),
-            width: rem(140),
+            display: 'none', // Hide on mobile
+        },
+    },
+
+    // New style for mobile hashtag badge inside the card
+    hashtagBadgeMobile: {
+        position: 'absolute',
+        top: rem(10),
+        left: rem(10),
+        width: rem(80),
+        height: 'auto',
+        zIndex: 10,
+        display: 'none', // Hidden by default
+        [theme.fn.smallerThan('sm')]: {
+            display: 'block', // Show only on mobile
         },
     },
 
@@ -91,6 +119,10 @@ const useStyles = createStyles((theme) => ({
             maxWidth: '90%',
             padding: rem(20),
             margin: `0 ${rem(10)}`,
+            position: 'relative', // Required for absolute positioning of children
+            // Ensure the card is properly centered
+            left: '50%',
+            transform: 'translateX(-50%)',
         },
     },
 
@@ -491,6 +523,7 @@ const AshbayPage = () => {
             <Box className={classes.root}>
                 {/* Hero Section */}
                 <Box className={classes.heroSection}>
+                    {/* Show hashtag badge outside card for desktop/tablet */}
                     <Box className={classes.hashtagBadge}>
                         <img 
                             src="/assets/img/explain.png" 
@@ -498,8 +531,18 @@ const AshbayPage = () => {
                             style={{ width: '100%', height: 'auto' }}
                         />
                     </Box>
+                    
                     <Container size="xl" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                         <Box className={classes.heroContent}>
+                            {/* Show hashtag badge inside card for mobile only */}
+                            <Box className={classes.hashtagBadgeMobile}>
+                                <img 
+                                    src="/assets/img/explain.png" 
+                                    alt="AlaoMe to explain"
+                                    style={{ width: '100%', height: 'auto' }}
+                                />
+                            </Box>
+                            
                             <img 
                                 src="/assets/img/11.png" 
                                 alt="AlaoMe Transformation"
@@ -615,7 +658,7 @@ const AshbayPage = () => {
                     </Container>
                 </Box>
 
-                {/* My Story Section - UPDATED */}
+                {/* My Story Section */}
                 <Box className={classes.storySection}>
                     <Container size="xl">
                         <Grid className={classes.mobileStackedGrid}>
@@ -643,7 +686,6 @@ const AshbayPage = () => {
                                 </Text>
                             </Grid.Col>
                             <Grid.Col md={6} sm={12} orderSm={1} orderMd={2}>
-                                {/* Title removed from here */}
                                 <Text className={classes.storyText}>
                                     Between juggling long hours at multiple jobs, 
                                     finishing business school, and providing financial support for his son, grandmother, and 
