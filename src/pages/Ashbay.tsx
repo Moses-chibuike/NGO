@@ -121,27 +121,35 @@ const useStyles = createStyles((theme) => ({
             margin: `0 ${rem(15)}`,
         },
         [theme.fn.smallerThan('sm')]: {
-            maxWidth: '95%',
-            width: '95%',
-            height: 'auto', // Changed from fixed height
-            minHeight: 'auto', // Changed from fixed minHeight
-            padding: rem(30),
-            margin: `${rem(80)} ${rem(10)} ${rem(40)} ${rem(10)}`, // Added top margin to avoid hamburger menu
+            maxWidth: '90%',
+            width: '90%',
+            height: rem(580), // Fixed height for mobile
+            minHeight: rem(580),
+            padding: rem(25),
+            margin: `${rem(120)} ${rem(20)} ${rem(40)} ${rem(20)}`, // Increased top margin to avoid hamburger menu
             position: 'relative',
             left: '50%',
             transform: 'translateX(-50%)',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'space-between', // Distribute content evenly
             alignItems: 'center',
+            boxSizing: 'border-box',
         },
         [theme.fn.smallerThan('xs')]: {
-            maxWidth: '98%',
-            width: '98%',
-            height: 'auto', // Changed from fixed height
-            minHeight: 'auto', // Changed from fixed minHeight
-            padding: rem(25),
-            margin: `${rem(70)} ${rem(5)} ${rem(30)} ${rem(5)}`, // Adjusted margins
+            maxWidth: '88%',
+            width: '88%',
+            height: rem(550), // Slightly smaller for very small screens
+            minHeight: rem(550),
+            padding: rem(20),
+            margin: `${rem(100)} ${rem(20)} ${rem(30)} ${rem(20)}`, // Adjusted margins for smaller screens
+        },
+        // Additional styles for iPhone and Android specific adjustments
+        '@media (max-width: 480px)': {
+            margin: `${rem(140)} ${rem(20)} ${rem(40)} ${rem(20)}`, // Extra space for mobile browsers
+        },
+        '@media (max-width: 375px)': {
+            margin: `${rem(130)} ${rem(15)} ${rem(30)} ${rem(15)}`, // iPhone SE and similar
         },
     },
 
@@ -187,11 +195,13 @@ const useStyles = createStyles((theme) => ({
             maxWidth: rem(280),
         },
         [theme.fn.smallerThan('sm')]: {
-            maxWidth: rem(280),
-            marginBottom: rem(20),
+            maxWidth: rem(240), // Reduced size for mobile
+            marginBottom: rem(15), // Reduced margin
+            flex: '0 0 auto', // Don't grow or shrink
         },
         [theme.fn.smallerThan('xs')]: {
-            maxWidth: rem(250),
+            maxWidth: rem(220),
+            marginBottom: rem(12),
         },
     },
 
@@ -206,13 +216,14 @@ const useStyles = createStyles((theme) => ({
             marginBottom: rem(16),
         },
         [theme.fn.smallerThan('sm')]: {
-            fontSize: rem(38),
-            marginBottom: rem(20),
+            fontSize: rem(32), // Reduced font size for mobile
+            marginBottom: rem(15),
             lineHeight: 1.2,
+            flex: '0 0 auto', // Don't grow or shrink
         },
         [theme.fn.smallerThan('xs')]: {
-            fontSize: rem(32),
-            marginBottom: rem(16),
+            fontSize: rem(28),
+            marginBottom: rem(12),
         },
     },
 
@@ -227,11 +238,14 @@ const useStyles = createStyles((theme) => ({
         },
         [theme.fn.smallerThan('sm')]: {
             fontSize: rem(16),
-            marginBottom: rem(30),
+            marginBottom: rem(20), // Reduced margin
+            flex: '1 1 auto', // Allow to grow and shrink
+            display: 'flex',
+            alignItems: 'center',
         },
         [theme.fn.smallerThan('xs')]: {
             fontSize: rem(14),
-            marginBottom: rem(25),
+            marginBottom: rem(15),
         },
     },
 
@@ -251,7 +265,8 @@ const useStyles = createStyles((theme) => ({
             padding: `${rem(15)} ${rem(35)}`,
             fontSize: rem(18),
             height: rem(50),
-            marginTop: rem(10),
+            marginTop: rem(0), // Removed top margin
+            flex: '0 0 auto', // Don't grow or shrink
         },
         [theme.fn.smallerThan('xs')]: {
             padding: `${rem(12)} ${rem(30)}`,
