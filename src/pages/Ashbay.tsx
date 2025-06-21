@@ -79,14 +79,19 @@ const useStyles = createStyles((theme) => ({
     // New style for mobile hashtag badge inside the card
     hashtagBadgeMobile: {
         position: 'absolute',
-        top: rem(10),
-        left: rem(10),
-        width: rem(80),
+        top: rem(15),
+        left: rem(15),
+        width: rem(100),
         height: 'auto',
         zIndex: 10,
         display: 'none', // Hidden by default
         [theme.fn.smallerThan('sm')]: {
             display: 'block', // Show only on mobile
+        },
+        [theme.fn.smallerThan('xs')]: {
+            top: rem(12),
+            left: rem(12),
+            width: rem(90),
         },
     },
 
@@ -116,13 +121,27 @@ const useStyles = createStyles((theme) => ({
             margin: `0 ${rem(15)}`,
         },
         [theme.fn.smallerThan('sm')]: {
-            maxWidth: '90%',
-            padding: rem(20),
-            margin: `0 ${rem(10)}`,
-            position: 'relative', // Required for absolute positioning of children
-            // Ensure the card is properly centered
+            maxWidth: '95%',
+            width: '95%',
+            height: 'auto', // Changed from fixed height
+            minHeight: 'auto', // Changed from fixed minHeight
+            padding: rem(30),
+            margin: `${rem(80)} ${rem(10)} ${rem(40)} ${rem(10)}`, // Added top margin to avoid hamburger menu
+            position: 'relative',
             left: '50%',
             transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        [theme.fn.smallerThan('xs')]: {
+            maxWidth: '98%',
+            width: '98%',
+            height: 'auto', // Changed from fixed height
+            minHeight: 'auto', // Changed from fixed minHeight
+            padding: rem(25),
+            margin: `${rem(70)} ${rem(5)} ${rem(30)} ${rem(5)}`, // Adjusted margins
         },
     },
 
@@ -168,7 +187,11 @@ const useStyles = createStyles((theme) => ({
             maxWidth: rem(280),
         },
         [theme.fn.smallerThan('sm')]: {
-            maxWidth: rem(220),
+            maxWidth: rem(280),
+            marginBottom: rem(20),
+        },
+        [theme.fn.smallerThan('xs')]: {
+            maxWidth: rem(250),
         },
     },
 
@@ -183,12 +206,13 @@ const useStyles = createStyles((theme) => ({
             marginBottom: rem(16),
         },
         [theme.fn.smallerThan('sm')]: {
-            fontSize: rem(32),
-            marginBottom: rem(12),
+            fontSize: rem(38),
+            marginBottom: rem(20),
             lineHeight: 1.2,
         },
         [theme.fn.smallerThan('xs')]: {
-            fontSize: rem(28),
+            fontSize: rem(32),
+            marginBottom: rem(16),
         },
     },
 
@@ -202,8 +226,12 @@ const useStyles = createStyles((theme) => ({
             marginBottom: rem(30),
         },
         [theme.fn.smallerThan('sm')]: {
+            fontSize: rem(16),
+            marginBottom: rem(30),
+        },
+        [theme.fn.smallerThan('xs')]: {
             fontSize: rem(14),
-            marginBottom: rem(24),
+            marginBottom: rem(25),
         },
     },
 
@@ -220,6 +248,12 @@ const useStyles = createStyles((theme) => ({
         transition: 'all 0.3s ease',
         cursor: 'pointer',
         [theme.fn.smallerThan('sm')]: {
+            padding: `${rem(15)} ${rem(35)}`,
+            fontSize: rem(18),
+            height: rem(50),
+            marginTop: rem(10),
+        },
+        [theme.fn.smallerThan('xs')]: {
             padding: `${rem(12)} ${rem(30)}`,
             fontSize: rem(16),
             height: rem(45),
