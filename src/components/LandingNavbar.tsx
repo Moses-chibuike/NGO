@@ -261,6 +261,16 @@ const LandingNavbar = ({compressed}: IProps) => {
                             <Button component={Link} to="/ashbay" className={classes.link} {...buttonProps}>
                                 AlaoMeHelp
                             </Button>
+                            <Button 
+                            component="a" 
+                            href="https://v0-blog-website-design-six.vercel.app/" 
+                            className={classes.link} 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            {...buttonProps}
+                            >
+                            Blog
+                            </Button>
                         </Flex>
                         <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop}/>
                     </Flex>
@@ -319,7 +329,14 @@ const LandingNavbar = ({compressed}: IProps) => {
                         className={classes.link} 
                         {...buttonProps}
                     >
-                        Transformation
+                        AlaomeHelp
+                    </Button>
+                    <Button 
+                        onClick={() => window.open('https://v0-blog-website-design-six.vercel.app/', '_blank')} 
+                        className={classes.link} 
+                        {...buttonProps}
+                    >
+                        Blog
                     </Button>
                 </ScrollArea>
             </Drawer>

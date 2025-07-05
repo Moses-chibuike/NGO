@@ -52,7 +52,7 @@ const data = [
     {link: '/create-campaign', label: 'Contact Us'},
     {link: '/dashboard', label: 'Team Members'},
     {link: '/ashbay', label: 'AlaoMeHelp'},
-   
+    {link: 'https://v0-blog-website-design-six.vercel.app/', label: 'Blog'},
 ];
 
 interface IProps extends FlexProps {
@@ -69,10 +69,19 @@ const AppLinks = ({onClose, ...others}: IProps) => {
         if (onClose) {
             onClose(); // Close the drawer first
         }
-        // Use setTimeout to ensure drawer closes before navigation
-        setTimeout(() => {
-            navigate(link);
-        }, 100);
+        
+        // Check if it's an external link
+        if (link.startsWith('http')) {
+            // For external links, open in new tab
+            setTimeout(() => {
+                window.open(link, '_blank');
+            }, 100);
+        } else {
+            // For internal links, use React Router navigation
+            setTimeout(() => {
+                navigate(link);
+            }, 100);
+        }
     };
 
     const links = data.map((item) => (
